@@ -1,0 +1,38 @@
+jobs = [
+    {
+        "company": "Microsoft",
+        "job_title": "Graduate Software Engineer",
+        "location": "London",
+        "date_posted": "January 10, 2022",
+        "apply_till": "March 30, 2022",
+        "about": "Responsibilities: sfjnkjnk,jnnnnn",
+        "apply_here": "Apply here",
+    },
+    {
+        "company": "Deutsche Bank",
+        "job_title": "Graduate Software Engineer",
+        "location": "London",
+        "date_posted": "January 10, 2022",
+        "apply_till": "March 30, 2022",
+        "about": "Responsibilities: sfjnkjnk,jnnns",
+        "apply_here": "Apply here",
+    },
+    {
+        "company": "Facebook",
+        "job_title": "Junior Support Analyst",
+        "location": "Remote",
+        "date_posted": "February 7, 2022",
+        "apply_till": "April 12, 2022",
+        "about": "Responsibilities: sfjnkjnk,jnnns",
+        "apply_here": "Apply here",
+    },
+    {
+        "company": "Capgemini",
+        "job_title": "Junior Network Analyst",
+        "location": "Brighton",
+        "date_posted": "February 7, 2022",
+        "apply_till": "April 12, 2022",
+        "about": "Responsibilities: sfjnkjnk,jnnns",
+        "apply_here": "Apply here",
+    },
+]
