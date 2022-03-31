@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\Kriti\Documents\cloud\env
+set VIRTUAL_ENV=C:\Users\Kriti\github\amazeballs-job-search\env
 
 if not defined PROMPT set PROMPT=$P$G
 
