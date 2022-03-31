@@ -12,3 +12,10 @@ pre-commit-mac:
 	brew install pre-commit
 	pre-commit install
 	pre-commit run --all-files
+
+run-local:
+	source venv/bin/activate; \
+	export CONFIG_PATH=config/local.cfg; \
+	export FLASK_APP=src/app; \
+	export FLASK_ENV=development; \
+	flask run
