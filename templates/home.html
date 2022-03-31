@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content%}
+<h1>WELCOME TO OUR JOB APPLICATION</h1>
+{% for job in jobs %}
+<article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+      <a class="mr-2" href="#">{{ job.company }}</a>
+      <small class="text-muted">{{ job.date_posted }}</small>
+      <a class="mr-2" href="#" align="right" style="float:right">{{ job.apply_here }}</a>
+    </div>
+    <h2><a class="article-title" href="#">{{ job.job_title }}</a></h2>
+    <p class="article-content">{{ job.about }}</p>
+  </div>
+</article>
+{% endfor %}
+{% endblock %}
