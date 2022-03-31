@@ -15,7 +15,7 @@ pre-commit-mac:
 
 run-local:
 	source venv/bin/activate; \
-	export CONFIG_PATH=config/local.cfg; \
-	export FLASK_APP=src/app; \
+	export CONFIG_PATH=configs/local.cfg; \
+	export FLASK_APP=app/server; \
 	export FLASK_ENV=development; \
 	flask run

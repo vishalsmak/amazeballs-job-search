@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_cors import CORS
 
-from src.config import config as cfg
+from app.config import config as cfg
 from src.views.auth import auth_app
 
 app = Flask(__name__, template_folder="../templates")
