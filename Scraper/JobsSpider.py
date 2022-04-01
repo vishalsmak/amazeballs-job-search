@@ -1,4 +1,5 @@
 import scrapy
+from ExtractKeywords import ExtractKeywords
 
 page_count = 0
 job_count = 0
@@ -50,7 +51,7 @@ class JobsSpider(scrapy.Spider):
                 'title':self.GetTitle(response),
                 'company':self.GetCompany(response),
                 'link':response.url,
-                'desc':self.GetDescription(response)
+                'desc': ExtractKeywords().extract(self.GetDescription(response))
             }
 
     def GetJobCount(self, response):
