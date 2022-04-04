@@ -23,3 +23,11 @@ virtualenv==20.14.0
 Werkzeug==2.1.0
 WTForms==3.0.1
 zipp==3.7.0
+
+
+# Dependencies for Resume parser
+Django==2.2.10
+django-crispy-forms==1.7.2
+pyresparser
+gunicorn
+spacy==2.3.5
