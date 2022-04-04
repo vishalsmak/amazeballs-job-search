@@ -1,9 +1,8 @@
-import os
 from utils import *
 import spacy
-import pprint
+#import pprint
 from spacy.matcher import Matcher
-import multiprocessing as mp
+#import multiprocessing as mp
 
 
 class ResumeParser(object):
@@ -60,8 +59,8 @@ def resume_result_wrapper(resume):
 
 
 if __name__ == '__main__':
-    # pool = mp.Pool(mp.cpu_count())
 
+    # pool = mp.Pool(mp.cpu_count())
     resumes = []
     data = []
     for root, directories, filenames in os.walk('/Users/vishal/Documents/code/ResumeParser/resumes'):
@@ -70,11 +69,7 @@ if __name__ == '__main__':
             resumes.append(file)
 
     # results = [pool.apply_async(resume_result_wrapper, args=(x,)) for x in resumes]
-
     result = resume_result_wrapper(resumes[0])
-
     # results = [p.get() for p in results]
-
     print(result)
-
     # pprint.pprint(results)
