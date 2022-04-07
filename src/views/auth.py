@@ -40,3 +40,11 @@ def login():
 @auth_app.route("/about", methods=["GET"])
 def about():
     return render_template("about.html", title="About")
+
+@auth_app.route("/profile", methods=["GET", "POST"])
+def profile():
+    return render_template("userprofile.html", title="Profile")
+
+@auth_app.route("/editprofile", methods=["GET", "POST"])
+def editprofile():
+    return render_template("editprofile.html", title="Edit profile")
