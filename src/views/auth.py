@@ -8,6 +8,10 @@ auth_app = Blueprint("auth", __name__)
 
 
 @auth_app.route("/", methods=["GET"])
+@auth_app.route("/land", methods=["GET"])
+def landingpg():
+    return render_template("landingpg.html",title="land")
+    
 @auth_app.route("/home", methods=["GET"])
 def home():
     return render_template("home.html", jobs=jobs)

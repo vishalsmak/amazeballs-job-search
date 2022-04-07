@@ -4,7 +4,7 @@ from flask_cors import CORS
 from app.config import config as cfg
 from src.views.auth import auth_app
 
-app = Flask(__name__, template_folder="../templates")
+app = Flask(__name__, template_folder="../templates", static_folder="../static")
 
 app.config["SECRET_KEY"] = cfg.get("common", "SECRET_KEY")
 
