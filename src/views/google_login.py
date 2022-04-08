@@ -1,11 +1,10 @@
 import json
 import logging
 
-from app.config import config as cfg
 import requests
+from flask import Blueprint, Response, request
 
-
-from flask import Blueprint, request, Response
+from app.config import config as cfg
 
 auth_app = Blueprint("auth", __name__)
 
@@ -46,9 +45,7 @@ def callback():
                     "code": code,
                     "redirect_uri": cfg.get("platform", "URL"),
                     "client_id": cfg.get("oauth-google", "CLIENT_ID"),
-                    "client_secret": cfg.get(
-                        "oauth-google", "CLIENT_SECRET"
-                    ),
+                    "client_secret": cfg.get("oauth-google", "CLIENT_SECRET"),
                 },
             ).content
         )

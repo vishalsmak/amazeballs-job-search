@@ -3,9 +3,8 @@ from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 
 from app.config import config as cfg
-from src.views.auth import auth_app
 from src.data.hub import hub_app
-
+from src.views.auth import auth_app
 
 app = Flask(__name__, template_folder="../templates")
 

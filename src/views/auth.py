@@ -1,8 +1,8 @@
 from flask import Blueprint, flash, redirect, render_template, url_for
 
+from src.data.local_data import jobs
 from src.forms.login import LoginForm
 from src.forms.registration import RegistrationForm
-from src.data.local_data import jobs
 
 auth_app = Blueprint("auth", __name__)
 

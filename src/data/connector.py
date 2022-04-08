@@ -1,6 +1,8 @@
-from app.config import config as cfg
 import urllib.parse
+
 import pymongo
+
+from app.config import config as cfg
 
 
 class Connection:
@@ -20,7 +22,9 @@ class Connection:
 
     def get_client(self):
         if not self._CLIENT:
-            self._CLIENT = pymongo.MongoClient(f'mongodb://{self.USER_NAME}:{urllib.parse.quote_plus(self.PASSWORD)}@{self.HOST}:{self.PORT}/{self.DB_NAME}')
+            self._CLIENT = pymongo.MongoClient(
+                f"mongodb://{self.USER_NAME}:{urllib.parse.quote_plus(self.PASSWORD)}@{self.HOST}:{self.PORT}/{self.DB_NAME}"
+            )
         return self._CLIENT
 
     def get_collections(self):
@@ -40,4 +44,3 @@ class Connection:
 
 
 mongo_db = Connection()
-
