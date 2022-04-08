@@ -1,7 +1,6 @@
 from pymongo import MongoClient
-
 from app.config import config as cfg
-
+from src.Entities.Job import Job
 
 class Connection:
     HOST = None
@@ -32,16 +31,20 @@ class Connection:
         qmul = self.get_db()
         qmul.list_collection_names()
 
-    def get_jobs(self):
-        qmul = self.get_db()
-        data = qmul["jobs"]
-        return data
-
-    def push_jobs(self, jobs):
+    #TODO : Get jobs from mongo
+    def get_jobs(self, keywords: list[str]) -> list[Job]:
         qmul = self.get_db()
         collection = qmul["jobs"]
-        collection.insert_many(jobs)
-        return
+        args = []
+        for keyword in keywords:
+            args.append({ 'keywords' : { '$regex' : '.*' + keyword + '.*', '$options' : 'i' } } )
+        return collection.find(*args) 
 
+    def push_jobs(self, jobs: list[Job]):
+        qmul = self.get_db()
+        collection = qmul["jobs"]
+        for job in jobs:
+            collection.insert_one(job.__dict__)
+        return
 
 mongo_db = Connection()
