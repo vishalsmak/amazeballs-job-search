@@ -1,11 +1,14 @@
-version: '3'
+version: '3.7'
 services:
-  database:
-    image: "postgres" # use latest official postgres version
-    env_file:
-      - database.env # configure postgres
+  mongodb_container:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: qmul
+      MONGO_INITDB_ROOT_PASSWORD: qmul
+    ports:
+      - "27017:27017"
     volumes:
-      - database-data:/var/lib/postgresql/data/ # persist data even if container shuts down
+      - mongodb_data_container:/data/db
 
 volumes:
-  database-data: # named volumes can be managed easier using docker-compose
+  mongodb_data_container:
