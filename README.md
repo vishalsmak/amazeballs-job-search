@@ -70,7 +70,7 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 
 [Namrata](https://github.com/NamrataKankaria) | [Vishal](https://github.com/vishalsmak)
 ---|---
-[Kriti](https://github.com/KritiJaggi) | [Maanav](https://github.com/maanav)
+[Kriti](https://github.com/KritiJaggi) | [Maanav](https://github.com/maanavb)
 
 ## [License](link)
 
