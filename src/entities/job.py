@@ -1,16 +1,13 @@
-from src.Entities.Company import Company
+from src.entities.company import Company
 from src.logic.resume_parser.resume_parser import *
 
 
 class Job:
-    """ Class to hold all details for a Job"""
+    """Class to hold all details for a Job"""
 
-    def __init__(self,
-                 id: str,
-                 key: str,
-                 title: str,
-                 description: str,
-                 **kwargs):
+    def __init__(
+        self, id: str, key: str, title: str, description: str, **kwargs
+    ):
         self._id = id
         self._key = key
         self._title = title
@@ -104,12 +101,14 @@ class Job:
     def from_json(cls, data):
         cls.company = Company.from_json(data["company"])
         retval = cls(**data)
-        keywords = job_result_wrapper(" ".join([retval._title, retval._description]), False)
-        retval.keywords = keywords['skills'] + [keywords['name']]
+        keywords = job_result_wrapper(
+            " ".join([retval._title, retval._description]), False
+        )
+        retval.keywords = keywords["skills"] + [keywords["name"]]
         return retval
 
     @classmethod
-    def list_from_json(cls, data):
+    def list_from_hub_json(cls, data):
         return list(map(cls.from_json, data["docs"]))
 
     @classmethod

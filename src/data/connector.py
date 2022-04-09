@@ -1,10 +1,10 @@
 import certifi
-from pymongo import MongoClient
+from pymongo import ASCENDING, MongoClient
+
 from app.config import config as cfg
 
 
 class Connection:
-
     HOST = None
     PORT = None
     USER_NAME = None
@@ -33,28 +33,50 @@ class Connection:
         qmul = self.get_db()
         qmul.list_collection_names()
 
-    def get_jobs(self, keywords):
+    def get_jobs(self, query, page):
+        page_limit = 10
         qmul = self.get_db()
         collection = qmul["jobs"]
-        args = []
-        # for keyword in keywords:
-        #     args.append({ 'keywords' : { '$regex' : '.*' + keyword + '.*', '$options' : 'i' } } )
-        return collection.find()[0:10]
+        jobs = (
+            collection.find(
+                filter={
+                    "$or": [
+                        {
+                            "_title": {
+                                "$regex": f".*{query}.*",
+                                "$options": "i",
+                            }
+                        },
+                        {
+                            "_description": {
+                                "$regex": f".*{query}.*",
+                                "$options": "i",
+                            }
+                        },
+                    ]
+                }
+            )
+            .sort([("_id", ASCENDING)])
+            .skip(page * page_limit)
+            .limit(page_limit)
+        )
 
-        #return collection.find({ '_keywords' : { '$regex' : '.*' + keywords + '.*', '$options' : 'i'}})
+        return jobs
 
     def push_jobs(self, jobs: list):
         qmul = self.get_db()
         collection = qmul["jobs"]
+        job_dicts = []
         for job in jobs:
             try:
-                dict = job.__dict__
-                dict['_company_name'] = job.company.name
-                dict['_company_website'] = job.company.website
-                collection.insert_one(dict)
-            except:
-                print('exception ignored')
-
+                job_dict = job.__dict__
+                job_dict["_company_name"] = job.company.name
+                job_dict["_company_website"] = job.company.website
+                del job_dict["_id"]
+                job_dicts.append(job_dict)
+            except Exception as error:
+                print(f"exception: {error}")
+        collection.insert_many(job_dicts)
         return None
 
     def get_user(self, email):

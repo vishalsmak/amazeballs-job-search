@@ -6,7 +6,8 @@ env-setup:
 	python3.9 -m venv venv; \
 	source venv/bin/activate; \
 	pip install --upgrade pip; \
-	pip install -r requirements.txt
+	pip install -r requirements.txt; \
+	python3 pre_requisites.py
 
 pre-commit-mac:
 	brew install pre-commit
