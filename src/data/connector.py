@@ -32,14 +32,15 @@ class Connection:
         qmul = self.get_db()
         qmul.list_collection_names()
 
-    # TODO : Get jobs from mongo
-    # def get_jobs(self, keywords: list[str]) -> list[Job]:
-    #     qmul = self.get_db()
-    #     collection = qmul["jobs"]
-    #     args = []
-    #     for keyword in keywords:
-    #         args.append({ 'keywords' : { '$regex' : '.*' + keyword + '.*', '$options' : 'i' } } )
-    #     return collection.find(*args)
+    def get_jobs(self, keywords):
+        qmul = self.get_db()
+        collection = qmul["jobs"]
+        args = []
+        # for keyword in keywords:
+        #     args.append({ 'keywords' : { '$regex' : '.*' + keyword + '.*', '$options' : 'i' } } )
+        return collection.find()[0:10]
+
+        #return collection.find({ '_keywords' : { '$regex' : '.*' + keywords + '.*', '$options' : 'i'}})
 
     def push_jobs(self, jobs: list):
         qmul = self.get_db()

@@ -1,5 +1,5 @@
 import requests
-from flask import Blueprint, Response
+from flask import Blueprint, Response, request
 from app.config import config as cfg
 from src.data.connector import mongo_db
 
@@ -8,18 +8,6 @@ import json
 from src.Entities.Job import Job
 
 hub_app = Blueprint("hub", __name__)
-
-
-# @hub_app.route("/hub", methods=["GET"])
-# def hub_jobs():
-#     url = cfg.get("hub", "URL")
-#     page = 1
-#     while page < 25:
-#         response = requests.get(f"{url}?page={page}").json()
-#         jobs = response["docs"]
-#         print(jobs)
-#         mongo_db.push_jobs(jobs)
-#     return Response(status=200, response={"success": True})
 
 
 @hub_app.route("/hub", methods=["GET"])
@@ -38,3 +26,13 @@ def hub_jobs():
         print(f'Completed Page {page}, pushed {des_jobs.count} jobs')
         page += 1
     return Response(status=200, response={"success": True})
+
+
+@hub_app.route("/getJobs", methods=["POST"])
+def get_jobs_keywords():
+    print(request.get_json()['keywords'])
+    job_list = []
+    for job in mongo_db.get_jobs(request.get_json()['keywords']):
+        job_list.append(job)
+    print(job_list)
+    return Response(status=200, response=json.dumps(job_list), headers={"Content-Type": "application/json"})
