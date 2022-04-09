@@ -1,5 +1,34 @@
 {% extends "layout.html" %}
 {% block content%}
+<!--<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>-->
+<script>
+    $(document).ready(function(){
+    debugger;
+      var get_job_parameter = { "query": "Fashion","page": 3}
+      var saveData = $.ajax({
+          type: 'GET',
+          url: "/hub/get_jobs",
+          data: get_job_parameter,
+          dataType: "text",
+          success: function(resultData) {
+             var data= JSON.parse(resultData);
+             html = '';
+             data.forEach(element => {
+                   html += '<div class="article-metadata">';
+                   html+= '<a class="mr-2" href="#">'+element._company_name+'</a>';
+                   html += '<small class="text-muted">'+element._description+'</small>';
+                   html += '<a class="mr-2" href="#" align="right" style="float:right">'+ "Apply Here" +'</a>';
+                   html += '</div>';
+                   html += '<h2><a class="article-title" href="#">'+element._title+'</a></h2>'
+                   html += '<p class="article-content">'+element._company_website+'</p>';
+                });
+                 var a = $('#MainDiv').html();
+                $('#MainDiv').html(html);
+          }
+        });
+   });
+</script>
+<h1>WELCOME TO OUR JOB APPLICATION</h1>
 <div class="somecontent-section">
 <form class="form-group ">
   <div class="float-container ">
@@ -18,15 +47,15 @@
 <br/>
 <br/>
 {% for job in jobs %}
-<article class="media content-section">
-  <div class="media-body">
-    <div class="article-metadata">
-      <a class="mr-2" href="#">{{ job.company }}</a>
-      <small class="text-muted">{{ job.date_posted }}</small>
-      <a class="mr-2" href="#" align="right" style="float:right">{{ job.apply_here }}</a>
-    </div>
-    <h2><a class="article-title" href="#">{{ job.job_title }}</a></h2>
-    <p class="article-content">{{ job.about }}</p>
+<article class="media content-section" id="HomeID">
+  <div class="media-body" id="MainDiv">
+<!--    <div class="article-metadata">-->
+<!--      <a class="mr-2" href="#">{{ job.company }}</a>-->
+<!--      <small class="text-muted">{{ job.date_posted }}</small>-->
+<!--      <a class="mr-2" href="#" align="right" style="float:right">{{ job.apply_here }}</a>-->
+<!--    </div>-->
+<!--    <h2><a class="article-title" href="#">{{ job.job_title }}</a></h2>-->
+<!--    <p class="article-content">{{ job.about }}</p>-->
   </div>
 </article>
 {% endfor %}
