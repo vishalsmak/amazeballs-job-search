@@ -1,8 +1,25 @@
 {% extends "layout.html" %}
 {% block content%}
+<script>
+    $(document).ready(function(){
+    debugger;
+      var get_job_parameter = { "query": "Fashion","page": 3}
+      var saveData = $.ajax({
+          type: 'GET',
+          url: "/hub/get_jobs",
+          data: null,
+          dataType: "text",
+          success: function(resultData) { alert("Save Complete") }
+        });
+   });
+
+<!--    $('HomeID').ready(function(){-->
+<!--       alert(2);-->
+<!--    });-->
+</script>
 <h1>WELCOME TO OUR JOB APPLICATION</h1>
 {% for job in jobs %}
-<article class="media content-section">
+<article class="media content-section" id="HomeID">
   <div class="media-body">
     <div class="article-metadata">
       <a class="mr-2" href="#">{{ job.company }}</a>
