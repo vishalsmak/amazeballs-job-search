@@ -1,6 +1,5 @@
 from flask import Flask
 from flask_cors import CORS
-from flask_sqlalchemy import SQLAlchemy
 
 from app.config import config as cfg
 from src.data.hub import hub_app
@@ -10,7 +9,6 @@ app = Flask(__name__, template_folder="../templates")
 
 app.config["SECRET_KEY"] = cfg.get("common", "SECRET_KEY")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-db = SQLAlchemy(app)
 
 if cfg.get("flask", "DEBUG", fallback=False):
     print("CORS enabled for the app !!")

@@ -1,12 +1,10 @@
-from utils import *
+from src.logic.resume_parser.utils import *
 import spacy
-#import pprint
 from spacy.matcher import Matcher
-#import multiprocessing as mp
 
 
 class ResumeParser(object):
-    def __init__(self, resume):
+    def __init__(self, resume, pdf=True):
         nlp = spacy.load('en_core_web_sm')
         self.__matcher = Matcher(nlp.vocab)
         self.__details = {
@@ -20,8 +18,13 @@ class ResumeParser(object):
             'measurable_results': None
         }
         self.__resume = resume
-        self.__text_raw = extract_text(self.__resume, os.path.splitext(self.__resume)[1])
-        self.__text = ' '.join(self.__text_raw.split())
+
+        if(pdf):
+            self.__text_raw = extract_text(self.__resume, os.path.splitext(self.__resume)[1])
+            self.__text = ' '.join(self.__text_raw.split())
+        else:
+            self.__text_raw = resume
+            self.__text = resume
         self.__nlp = nlp(self.__text)
         self.__noun_chunks = list(self.__nlp.noun_chunks)
         self.__get_basic_details()
@@ -53,23 +56,23 @@ class ResumeParser(object):
         return
 
 
-def resume_result_wrapper(resume):
-    parser = ResumeParser(resume)
+def job_result_wrapper(resume, pdf: bool):
+    parser = ResumeParser(resume, pdf)
     return parser.get_extracted_data()
 
 
-if __name__ == '__main__':
-
-    # pool = mp.Pool(mp.cpu_count())
-    resumes = []
-    data = []
-    for root, directories, filenames in os.walk('/Users/vishal/Documents/code/ResumeParser/resumes'):
-        for filename in filenames:
-            file = os.path.join(root, filename)
-            resumes.append(file)
-
-    # results = [pool.apply_async(resume_result_wrapper, args=(x,)) for x in resumes]
-    result = resume_result_wrapper(resumes[0])
-    # results = [p.get() for p in results]
-    print(result)
-    # pprint.pprint(results)
+# if __name__ == '__main__':
+#
+#     # pool = mp.Pool(mp.cpu_count())
+#     resumes = []
+#     data = []
+#     for root, directories, filenames in os.walk('/Users/vishal/Documents/code/ResumeParser/resumes'):
+#         for filename in filenames:
+#             file = os.path.join(root, filename)
+#             resumes.append(file)
+#
+#     # results = [pool.apply_async(resume_result_wrapper, args=(x,)) for x in resumes]
+#     result = job_result_wrapper(resumes[0], True)
+#     # results = [p.get() for p in results]
+#     print(result)
+#     # pprint.pprint(results)

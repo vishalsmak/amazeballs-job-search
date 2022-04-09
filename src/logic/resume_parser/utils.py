@@ -6,7 +6,7 @@ import nltk
 import spacy
 import pandas as pd
 import docx2txt
-from constants import *
+from src.logic.resume_parser.constants import *
 from spacy.matcher import Matcher
 from pdfminer.converter import TextConverter
 from pdfminer.pdfinterp import PDFPageInterpreter
