@@ -12,7 +12,6 @@ hub_app = Blueprint("hub", __name__)
 
 @hub_app.route("/hub", methods=["GET"])
 def hub_jobs():
-
     search_cat = 'tech'
     page = 1
     pages = 2
@@ -24,7 +23,6 @@ def hub_jobs():
         des_jobs = Job.list_from_json(json.loads(response.content))
         mongo_db.push_jobs(des_jobs)
         print(f'Completed Page {page}, pushed {des_jobs.count} jobs')
-        page += 1
     return Response(status=200, response={"success": True})
 
 
