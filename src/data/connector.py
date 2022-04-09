@@ -1,3 +1,4 @@
+import certifi
 from pymongo import MongoClient
 
 from app.config import config as cfg
@@ -14,16 +15,16 @@ class Connection:
 
     def __init__(self):
         self.HOST = cfg.get("mongo", "HOST")
-        self.PORT = cfg.get("mongo", "PORT")
         self.USER_NAME = cfg.get("mongo", "USER_NAME")
         self.PASSWORD = cfg.get("mongo", "PASSWORD")
         self.DB_NAME = cfg.get("mongo", "DB_NAME")
+        self.HTTP = cfg.get("mongo", "HTTP")
 
     def get_db(self):
         if not self.CONNECTION:
-            client = MongoClient(
-                f"mongodb://{self.USER_NAME}:{self.PASSWORD}@{self.HOST}:{self.PORT}"
-            )
+            connection_url = f"{self.HTTP}://{self.USER_NAME}:{self.PASSWORD}@{self.HOST}/?authMechanism=DEFAULT"
+            print(f"Connection Url: {connection_url}")
+            client = MongoClient(connection_url, tlsCAFile=certifi.where())
             self._DB = client[self.DB_NAME]
             self.CONNECTION = True
         return self._DB
