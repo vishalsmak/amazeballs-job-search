@@ -31,20 +31,14 @@ def hub_jobs():
     return Response(status=200, response={"success": True})
 
 
-@hub_app.route("/hub/get_jobs", methods=["POST"])
-def get_jobs_keywords():
-    body = request.get_json()
-    query = body.get("query", "")
-    page = max(body.get("page", 0) - 1, 0)
+@hub_app.route("/hub/get_jobs", methods=["GET"])
+def get_jobs():
+    query = request.args.get("query", "")
+    page = max(int(request.args.get("page", 0)) - 1, 0)
 
     jobs = []
     for job in mongo_db.get_jobs(query, page):
         job["_id"] = str(job["_id"])
         jobs.append(job)
-    print(jobs)
 
-    return Response(
-        status=200,
-        response=json.dumps([job for job in jobs]),
-        headers={"Content-Type": "application/json"},
-    )
+    return Response(status=200, response=json.dumps([job for job in jobs]))
