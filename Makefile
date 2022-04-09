@@ -13,7 +13,15 @@ pre-commit-mac:
 	pre-commit install
 	pre-commit run --all-files
 
-run-local:
+local:
+	source venv/bin/activate; \
+	export CONFIG_PATH=configs/local.cfg; \
+	export FLASK_APP=app/server; \
+	export FLASK_ENV=development; \
+	docker-compose up -d; \
+	flask run
+
+cloud:
 	source venv/bin/activate; \
 	export CONFIG_PATH=configs/local.cfg; \
 	export FLASK_APP=app/server; \

@@ -18,11 +18,12 @@ class Connection:
         self.USER_NAME = cfg.get("mongo", "USER_NAME")
         self.PASSWORD = cfg.get("mongo", "PASSWORD")
         self.DB_NAME = cfg.get("mongo", "DB_NAME")
+        self.HTTP = cfg.get("mongo", "HTTP")
 
     def get_db(self):
         if not self.CONNECTION:
             client = MongoClient(
-                f"mongodb://{self.USER_NAME}:{self.PASSWORD}@{self.HOST}:{self.PORT}"
+                f"{self.HTTP}://{self.USER_NAME}:{self.PASSWORD}@{self.HOST}:{self.PORT}"
             )
             self._DB = client[self.DB_NAME]
             self.CONNECTION = True
