@@ -26,7 +26,8 @@ def hub_jobs():
         pages = response.json()["pages"]
         des_jobs = Job.list_from_hub_json(json.loads(response.content))
         mongo_db.push_jobs(des_jobs)
-        print(f"Completed Page {page}, pushed {des_jobs.count} jobs")
+        print(f"Completed Page {page}")
+        page += 1
     return Response(status=200, response={"success": True})
 
 

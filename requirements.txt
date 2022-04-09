@@ -1,7 +1,7 @@
 attrs==21.4.0
 blis==0.7.7
 cachetools==5.0.0
-catalogue==2.0.7
+catalogue==1.0.0
 certifi==2021.10.8
 cffi==1.15.0
 cfgv==3.3.1
@@ -14,7 +14,7 @@ distlib==0.3.4
 dnspython==2.2.1
 docx2txt==0.8
 email-validator==1.1.3
-en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.2.0/en_core_web_sm-3.2.0-py3-none-any.whl
+en-core-web-sm==2.3.1
 filelock==3.6.0
 Flask==2.1.1
 Flask-Cors==3.0.10
@@ -71,12 +71,12 @@ rsa==4.8
 six==1.16.0
 smart-open==5.2.1
 sortedcontainers==2.4.0
-spacy==3.2.4
+spacy==2.3.7
 spacy-legacy==3.0.9
 spacy-loggers==1.0.2
 SQLAlchemy==1.4.32
-srsly==2.4.2
-thinc==8.0.15
+srsly==1.0.5
+thinc==7.4.5
 toml==0.10.2
 tqdm==4.64.0
 typer==0.4.1

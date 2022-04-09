@@ -48,6 +48,7 @@ class Connection:
                 job_dict = job.__dict__
                 job_dict["_company_name"] = job.company.name
                 job_dict["_company_website"] = job.company.website
+                del job_dict["_id"]
                 job_dicts.append(job_dict)
             except Exception as error:
                 print(f"exception: {error}")

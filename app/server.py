@@ -1,6 +1,3 @@
-import ssl
-
-import nltk
 from flask import Flask
 from flask_cors import CORS
 
@@ -8,15 +5,6 @@ from app.config import config as cfg
 from src.data.hub import hub_app
 from src.views.auth import auth_app
 from src.views.google_login import google_app
-
-try:
-    _create_unverified_https_context = ssl._create_unverified_context
-except AttributeError:
-    pass
-else:
-    ssl._create_default_https_context = _create_unverified_https_context
-
-nltk.download("stopwords")
 
 app = Flask(__name__, template_folder="../templates")
 
