@@ -5,6 +5,7 @@ from src.forms.login import LoginForm
 from src.forms.registration import RegistrationForm
 from src.forms.updateaccount import UpdateAccountForm
 from src.forms.application import ApplicationForm
+from src.forms.search import SearchForm
 from src.local_data import jobs
 
 auth_app = Blueprint("auth", __name__)
@@ -17,7 +18,8 @@ def landingpg():
 
 @auth_app.route("/home", methods=["GET"])
 def home():
-    return render_template("home.html", jobs=jobs)
+    form= SearchForm()
+    return render_template("home.html", jobs=jobs, form=form)
 
 
 @auth_app.route("/register", methods=["GET", "POST"])
