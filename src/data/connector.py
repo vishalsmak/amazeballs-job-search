@@ -46,8 +46,8 @@ class Connection:
     def get_user(self, email):
         qmul = self.get_db()
         collection = qmul["users"]
-        collection.find_one(filter={"email": email})
-        return
+        res = collection.find_one(filter={"email": email})
+        return res
 
     def save_user(self, email, first_name, last_name, attributes=None):
         if attributes is None:
