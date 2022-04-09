@@ -1,11 +1,10 @@
 import certifi
-from pymongo import MongoClient
+from pymongo import ASCENDING, MongoClient
 
 from app.config import config as cfg
 
 
 class Connection:
-
     HOST = None
     PORT = None
     USER_NAME = None
@@ -34,10 +33,35 @@ class Connection:
         qmul = self.get_db()
         qmul.list_collection_names()
 
-    def get_jobs(self, keywords):
+    def get_jobs(self, query, page):
+        page_limit = 10
         qmul = self.get_db()
         collection = qmul["jobs"]
-        return collection.find()[0:10]
+        jobs = (
+            collection.find(
+                filter={
+                    "$or": [
+                        {
+                            "_title": {
+                                "$regex": f".*{query}.*",
+                                "$options": "i",
+                            }
+                        },
+                        {
+                            "_description": {
+                                "$regex": f".*{query}.*",
+                                "$options": "i",
+                            }
+                        },
+                    ]
+                }
+            )
+            .sort([("_id", ASCENDING)])
+            .skip(page * page_limit)
+            .limit(page_limit)
+        )
+
+        return jobs
 
     def push_jobs(self, jobs: list):
         qmul = self.get_db()
