@@ -12,12 +12,25 @@
           success: function(resultData) { alert("Save Complete") }
         });
    });
-
-<!--    $('HomeID').ready(function(){-->
-<!--       alert(2);-->
-<!--    });-->
 </script>
 <h1>WELCOME TO OUR JOB APPLICATION</h1>
+<div class="somecontent-section">
+<form class="form-group ">
+  <div class="float-container ">
+
+    <div class="float-child ">
+        {{ form.search(class="form-control form-control-lg") }}
+    </div>
+    <div class="float-child ">
+    {{ form.submit(class="btn btn-primary  ") }}
+    </div>
+
+  </div>
+</form>
+<br/>
+<br/>
+<br/>
+<br/>
 {% for job in jobs %}
 <article class="media content-section" id="HomeID">
   <div class="media-body">
@@ -31,4 +44,5 @@
   </div>
 </article>
 {% endfor %}
+</div>
 {% endblock %}

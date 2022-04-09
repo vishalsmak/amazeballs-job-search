@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-  <div class="content-section">
+  <div class="regcontent-section">
     <form class="" action="" method="post">
       {{ form.hidden_tag() }} <!-- cross-site req forgery token, needed for protection of the security key -->
       <fieldset class="form-group">
@@ -63,6 +63,7 @@
           {% endif %}
         </div>
       </fieldset>
+      <br/>
       <div class="form-group">
         {{ form.submit(class="btn btn-outline-info") }}
       </div>
