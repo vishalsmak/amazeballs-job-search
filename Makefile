@@ -23,8 +23,7 @@ local:
 
 cloud:
 	source venv/bin/activate; \
-	export CONFIG_PATH=configs/local.cfg; \
+	export CONFIG_PATH=configs/cloud.cfg; \
 	export FLASK_APP=app/server; \
 	export FLASK_ENV=development; \
-	docker-compose up -d; \
 	flask run
