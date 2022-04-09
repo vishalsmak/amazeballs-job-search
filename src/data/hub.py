@@ -6,7 +6,7 @@ from flask import Blueprint, Response, request
 
 from app.config import config as cfg
 from src.data.connector import mongo_db
-from src.Entities.Job import Job
+from src.entities.job import Job
 
 hub_app = Blueprint("hub", __name__)
 
@@ -24,7 +24,7 @@ def hub_jobs():
             url=url, headers={"Accept": "application/json"}
         )
         pages = response.json()["pages"]
-        des_jobs = Job.list_from_json(json.loads(response.content))
+        des_jobs = Job.list_from_hub_json(json.loads(response.content))
         mongo_db.push_jobs(des_jobs)
         print(f"Completed Page {page}, pushed {des_jobs.count} jobs")
     return Response(status=200, response={"success": True})

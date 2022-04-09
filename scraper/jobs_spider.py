@@ -1,5 +1,5 @@
 import scrapy
-from ExtractKeywords import ExtractKeywords
+from extract_keywords import ExtractKeywords
 
 page_count = 0
 job_count = 0

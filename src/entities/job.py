@@ -1,4 +1,4 @@
-from src.Entities.Company import Company
+from src.entities.company import Company
 from src.logic.resume_parser.resume_parser import *
 
 
@@ -108,7 +108,7 @@ class Job:
         return retval
 
     @classmethod
-    def list_from_json(cls, data):
+    def list_from_hub_json(cls, data):
         return list(map(cls.from_json, data["docs"]))
 
     @classmethod

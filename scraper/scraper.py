@@ -1,4 +1,4 @@
-from JobsSpider import JobsSpider
+from jobs_spider import JobsSpider
 from scrapy.crawler import CrawlerProcess
 
 if __name__ == "__main__":
