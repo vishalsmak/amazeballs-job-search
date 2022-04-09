@@ -1,4 +1,5 @@
 from src.Entities.Company import Company
+from src.logic.resume_parser.resume_parser import *
 
 
 class Job:
@@ -103,7 +104,8 @@ class Job:
     def from_json(cls, data):
         cls.company = Company.from_json(data["company"])
         retval = cls(**data)
-        retval.keywords = []  # TODO : Parse keywords from retval.description and add here
+        keywords = job_result_wrapper(retval._description, False)
+        retval.keywords = keywords['skills']
         return retval
 
     @classmethod
