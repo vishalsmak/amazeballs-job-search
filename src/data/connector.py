@@ -1,5 +1,6 @@
 import certifi
 from pymongo import MongoClient
+
 from app.config import config as cfg
 
 
@@ -36,25 +37,21 @@ class Connection:
     def get_jobs(self, keywords):
         qmul = self.get_db()
         collection = qmul["jobs"]
-        args = []
-        # for keyword in keywords:
-        #     args.append({ 'keywords' : { '$regex' : '.*' + keyword + '.*', '$options' : 'i' } } )
         return collection.find()[0:10]
-
-        #return collection.find({ '_keywords' : { '$regex' : '.*' + keywords + '.*', '$options' : 'i'}})
 
     def push_jobs(self, jobs: list):
         qmul = self.get_db()
         collection = qmul["jobs"]
+        job_dicts = []
         for job in jobs:
             try:
-                dict = job.__dict__
-                dict['_company_name'] = job.company.name
-                dict['_company_website'] = job.company.website
-                collection.insert_one(dict)
-            except:
-                print('exception ignored')
-
+                job_dict = job.__dict__
+                job_dict["_company_name"] = job.company.name
+                job_dict["_company_website"] = job.company.website
+                job_dicts.append(job_dict)
+            except Exception as error:
+                print(f"exception: {error}")
+        collection.insert_many(job_dicts)
         return None
 
     def get_user(self, email):
