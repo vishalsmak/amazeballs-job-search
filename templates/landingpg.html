@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block content%}
+<div class="col-md-8 offset-md-2 info  ">
+      <h1 style="color: red" class="text-center">WELCOME</h1>
+      <p style="color: black" class="text-center">
+        To our Job Portal
+      </p>
+      <a href="{{ url_for('auth.home') }}" class="btn btn-md text-center">FIND JOBS</a>
+</div>
+
+{% endblock %}

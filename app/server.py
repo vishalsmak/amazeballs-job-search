@@ -6,7 +6,7 @@ from src.data.hub import hub_app
 from src.views.auth import auth_app
 from src.views.google_login import google_app
 
-app = Flask(__name__, template_folder="../templates")
+app = Flask(__name__, template_folder="../templates", static_folder="../static")
 
 app.config["SECRET_KEY"] = cfg.get("common", "SECRET_KEY")
 
