@@ -6,16 +6,25 @@ env-setup:
 	python3.9 -m venv venv; \
 	source venv/bin/activate; \
 	pip install --upgrade pip; \
-	pip install -r requirements.txt
+	pip install -r requirements.txt; \
+	python3 pre_requisites.py
 
 pre-commit-mac:
 	brew install pre-commit
 	pre-commit install
 	pre-commit run --all-files
 
-run-local:
+local:
 	source venv/bin/activate; \
 	export CONFIG_PATH=configs/local.cfg; \
+	export FLASK_APP=app/server; \
+	export FLASK_ENV=development; \
+	docker-compose up -d; \
+	flask run
+
+cloud:
+	source venv/bin/activate; \
+	export CONFIG_PATH=configs/cloud.cfg; \
 	export FLASK_APP=app/server; \
 	export FLASK_ENV=development; \
 	flask run

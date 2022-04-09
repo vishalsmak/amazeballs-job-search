@@ -1,12 +1,17 @@
 from flask import Blueprint, flash, redirect, render_template, url_for
 from flask_login import current_user,login_user,logout_user
 
+from src.data.local_data import jobs
 from src.forms.login import LoginForm
 from src.forms.registration import RegistrationForm
+
 from src.forms.updateaccount import UpdateAccountForm
 from src.forms.application import ApplicationForm
 from src.forms.search import SearchForm
 from src.local_data import jobs
+
+from src.views.google_login import get_google_url
+
 
 auth_app = Blueprint("auth", __name__)
 
@@ -43,7 +48,9 @@ def login():
             return redirect(url_for("auth.home"))
         else:
             flash("Incorrect Login", "danger")
-    return render_template("login.html", title="Login", form=form)
+    return render_template(
+        "login.html", title="Login", form=form, google_url=get_google_url()
+    )
 
 
 @auth_app.route("/about", methods=["GET"])

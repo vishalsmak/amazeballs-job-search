@@ -24,13 +24,15 @@
       <small class="text-muted ml-2">
         <a href="#">Forgot Password?</a>
       </small>
+      <small class="text-muted ml-2">
+        <a href="{{google_url}}">Google Login!</a>
+      </small>
     </form>
   </div>
   <div class="border-top pt-3">
     <small class="text-muted">
       Need an account? <a class="ml-2" href="{{ url_for('auth.register') }}">Sign Up Now!</a>
     </small>
-
   </div>
 
 {% endblock %}
