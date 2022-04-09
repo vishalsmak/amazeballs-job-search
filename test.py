@@ -7,12 +7,14 @@ search_cat = 'tech'
 page = 1
 pages = 2
 
-while page < pages:
-    url = f'https://thehub.io/api/jobs?search={search_cat}+&page={page}'
-    response = requests.get(url=url, headers={"Accept":"application/json"})
-    pages = response.json()["pages"]
-    des_jobs = Job.list_from_json(json.loads(response.content))
-    for job in des_jobs:
-        mongo_db.push_jobs
-    mongo_db.push_jobs(des_jobs)
-    print(f'Completed Page {page}, pushed {des_jobs.count} jobs')
+
+if __name__ == '__main__':
+
+    while page < pages:
+        url = f'https://thehub.io/api/jobs?search={search_cat}+&page={page}'
+        response = requests.get(url=url, headers={"Accept":"application/json"})
+        pages = response.json()["pages"]
+        des_jobs = Job.list_from_json(json.loads(response.content))
+        mongo_db.push_jobs(des_jobs)
+        print(f'Completed Page {page}, pushed {des_jobs.count} jobs')
+        page += 1
