@@ -5,7 +5,6 @@ import re
 import docx2txt
 import nltk
 import pandas as pd
-from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
