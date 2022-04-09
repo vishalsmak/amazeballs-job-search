@@ -14,6 +14,5 @@ def hub_jobs():
     while page < 25:
         response = requests.get(f"{url}?page={page}").json()
         jobs = response["docs"]
-        print(jobs)
         mongo_db.push_jobs(jobs)
     return Response(status=200, response={"success": True})

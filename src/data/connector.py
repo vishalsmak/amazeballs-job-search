@@ -43,5 +43,27 @@ class Connection:
         collection.insert_many(jobs)
         return
 
+    def get_user(self, email):
+        qmul = self.get_db()
+        collection = qmul["users"]
+        res = collection.find_one(filter={"email": email})
+        return res
+
+    def save_user(self, email, first_name, last_name, attributes=None):
+        if attributes is None:
+            attributes = {}
+
+        qmul = self.get_db()
+        collection = qmul["users"]
+        collection.insert_one(
+            {
+                "email": email,
+                "first_name": first_name,
+                "last_name": last_name,
+                "attributes": attributes,
+            }
+        )
+        return
+
 
 mongo_db = Connection()
