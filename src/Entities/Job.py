@@ -104,8 +104,8 @@ class Job:
     def from_json(cls, data):
         cls.company = Company.from_json(data["company"])
         retval = cls(**data)
-        keywords = job_result_wrapper(retval._description, False)
-        retval.keywords = keywords['skills']
+        keywords = job_result_wrapper(" ".join([retval._title, retval._description]), False)
+        retval.keywords = keywords['skills'] + [keywords['name']]
         return retval
 
     @classmethod
