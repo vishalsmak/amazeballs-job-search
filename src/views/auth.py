@@ -4,6 +4,7 @@ from flask_login import current_user,login_user,logout_user
 from src.forms.login import LoginForm
 from src.forms.registration import RegistrationForm
 from src.forms.updateaccount import UpdateAccountForm
+from src.forms.application import ApplicationForm
 from src.local_data import jobs
 
 auth_app = Blueprint("auth", __name__)
@@ -65,3 +66,8 @@ def account():
     form = UpdateAccountForm()
     image_file= url_for('static',filename='profileimg.jpg')
     return render_template('profile.html', title='Account', image_file= image_file, form=form)
+
+@auth_app.route("/apply", methods=['GET', 'POST'])
+def apply():
+    form = ApplicationForm()
+    return render_template('apply.html', title='Application', form=form)
