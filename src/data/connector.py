@@ -1,8 +1,9 @@
 from pymongo import MongoClient
 from app.config import config as cfg
-from src.Entities.Job import Job
+
 
 class Connection:
+
     HOST = None
     PORT = None
     USER_NAME = None
@@ -31,20 +32,28 @@ class Connection:
         qmul = self.get_db()
         qmul.list_collection_names()
 
-    #TODO : Get jobs from mongo
-    def get_jobs(self, keywords: list[str]) -> list[Job]:
-        qmul = self.get_db()
-        collection = qmul["jobs"]
-        args = []
-        for keyword in keywords:
-            args.append({ 'keywords' : { '$regex' : '.*' + keyword + '.*', '$options' : 'i' } } )
-        return collection.find(*args) 
+    # TODO : Get jobs from mongo
+    # def get_jobs(self, keywords: list[str]) -> list[Job]:
+    #     qmul = self.get_db()
+    #     collection = qmul["jobs"]
+    #     args = []
+    #     for keyword in keywords:
+    #         args.append({ 'keywords' : { '$regex' : '.*' + keyword + '.*', '$options' : 'i' } } )
+    #     return collection.find(*args)
 
-    def push_jobs(self, jobs: list[Job]):
+    def push_jobs(self, jobs: list):
         qmul = self.get_db()
         collection = qmul["jobs"]
         for job in jobs:
-            collection.insert_one(job.__dict__)
-        return
+            try:
+                dict = job.__dict__
+                dict['_company_name'] = job.company.name
+                dict['_company_website'] = job.company.website
+                collection.insert_one(dict)
+            except:
+                print('exception ignored')
+
+        return None
+
 
 mongo_db = Connection()
