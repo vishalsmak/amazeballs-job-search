@@ -28,6 +28,8 @@ Here is a working live demo :  [link to youtube video]
 ![](images/webapp4.jpeg)
 ![](images/webapp5.jpeg)
 
+## Architecture
+
 
 ## Mobile support
 The WebApp is compatible with devices of all sizes and all OS's, and consistent improvements will be made.
@@ -68,7 +70,7 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 
 [Namrata](https://github.com/NamrataKankaria) | [Vishal](https://github.com/vishalsmak)
 ---|---
-[kriti](https://github.com/KritiJaggi) | [Maanav](https://github.com/maanav)
+[Kriti](https://github.com/KritiJaggi) | [Maanav](https://github.com/maanav)
 
 ## [License](link)
 
