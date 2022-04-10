@@ -72,7 +72,7 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 ## Built with 
 * [Python](https://docs.python.org/3/)
 * [Flask](http://flask.pocoo.org/docs/1.0/)
-* [Docker](https://docs.docker.com/)
+* [Kubernetes](https://kubernetes.io/docs/home/)
 * [MongoDB](https://www.mongodb.com/docs/) 
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) 
 * [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) 
