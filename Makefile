@@ -19,12 +19,24 @@ local:
 	export CONFIG_PATH=configs/local.cfg; \
 	export FLASK_APP=app/server; \
 	export FLASK_ENV=development; \
-	docker-compose up -d; \
+	docker-compose -f docker-compose.local.yaml up -d; \
 	flask run
 
 cloud:
 	source venv/bin/activate; \
-	export CONFIG_PATH=configs/cloud.cfg; \
-	export FLASK_APP=app/server; \
-	export FLASK_ENV=development; \
-	flask run
+	sh gunicorn_starter.sh
+
+docker-build:
+	docker-compose build
+	docker tag amazeballs-job-search_job_search:latest europe-west2-docker.pkg.dev/qmul-346622/qmul/job_search:latest
+
+docker: docker-build
+	docker-compose up
+
+kubectl:
+	gcloud container clusters get-credentials qmul --region europe-west2 --project qmul-346622
+	kubectl create deployment qmul --image=europe-west2-docker.pkg.dev/qmul-346622/qmul/job_search:latest
+	kubectl scale deployment qmul --replicas=2
+	kubectl autoscale deployment qmul --cpu-percent=80 --min=1 --max=5
+	kubectl expose deployment qmul --name=job-search --type=LoadBalancer --port 80 --target-port 5000
+	kubectl get service

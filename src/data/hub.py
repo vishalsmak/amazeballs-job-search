@@ -6,7 +6,7 @@ from flask import Blueprint, Response, request
 
 from app.config import config as cfg
 from src.data.connector import mongo_db
-from src.Entities.job import Job
+from src.entities.job import Job
 
 hub_app = Blueprint("hub", __name__)
 
