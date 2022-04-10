@@ -27,6 +27,6 @@ def verify():
     return "Hurray!! Happy that I am alive. Have a good day :)"
 
 
-DEBUG = cfg.get("common", "DEBUG", fallback=False)
-if DEBUG:
+if __name__ == "__main__":
+    DEBUG = bool(cfg.get("common", "DEBUG", fallback=False))
     app.run(host="0.0.0.0", debug=DEBUG)
