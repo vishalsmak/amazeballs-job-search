@@ -6,7 +6,9 @@ from src.data.hub import hub_app
 from src.views.auth import auth_app
 from src.views.google_login import google_app
 
-app = Flask(__name__, template_folder="../templates", static_folder="../static")
+app = Flask(
+    __name__, template_folder="../templates", static_folder="../static"
+)
 
 app.config["SECRET_KEY"] = cfg.get("common", "SECRET_KEY")
 
@@ -25,8 +27,6 @@ def verify():
     return "Hurray!! Happy that I am alive. Have a good day :)"
 
 
-app.run(
-    host="0.0.0.0",
-    debug=cfg.get("common", "DEBUG", fallback=False),
-    port=cfg.get("common", "PORT", fallback=5000),
-)
+DEBUG = cfg.get("common", "DEBUG", fallback=False)
+if DEBUG:
+    app.run(host="0.0.0.0", debug=DEBUG)

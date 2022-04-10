@@ -19,7 +19,7 @@ local:
 	export CONFIG_PATH=configs/local.cfg; \
 	export FLASK_APP=app/server; \
 	export FLASK_ENV=development; \
-	docker-compose up -d; \
+	docker-compose -f docker-compose.local.yaml up -d; \
 	flask run
 
 cloud:
