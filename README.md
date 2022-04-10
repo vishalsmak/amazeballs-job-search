@@ -29,7 +29,7 @@ Here is a working live demo :  [link to youtube video]
 ![](images/webapp5.jpeg)
 
 ## Architecture
-
+![System Architecture](https://user-images.githubusercontent.com/74494191/162629490-80b4cd99-e7e1-4bcf-9b71-07ae6b6f7db6.jpeg)
 
 ## Mobile support
 The Web App is compatible with devices of all sizes and all OS's, and consistent improvements will be made.
