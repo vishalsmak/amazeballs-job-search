@@ -3,7 +3,7 @@
 <table>
 <tr>
 <td>
-  A webapp using rest based api's for smart job search. A smart recommender system is implemented which would pickup required details from resume like skills,
+  A web app using REST based api's for smart job search. A smart recommender system is implemented which would pickup required details from resume like skills,
 personal info, hobbies and recommend the most suitable jobs according to current job openings. A sleek web interface has been implemented to ease laborious process of job hunting.  
 </td>
 </tr>
@@ -32,7 +32,7 @@ Here is a working live demo :  [link to youtube video]
 
 
 ## Mobile support
-The WebApp is compatible with devices of all sizes and all OS's, and consistent improvements will be made.
+The Web App is compatible with devices of all sizes and all OS's, and consistent improvements will be made.
 
 
 
@@ -58,7 +58,7 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 
 ## Built with 
 
--  Python, Flask, Docker, html, css
+-  Python, Flask, Docker, HTML, CSS
 
 
 
