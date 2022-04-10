@@ -1,13 +1,7 @@
 # About Amaze Job Search Web App
-<table>
-<td>
-    This README provides a rundown of our Cloud Computing Mini Project (ECS781P) done at Queen Mary University of London. 
-    We have developed a simple job search application for students. It utilises an open API sourced from the Hub, which can be found 
-    [here](https://api.thehub.io/jobs/)
+This README provides a rundown of our Cloud Computing Mini Project (ECS781P) done at Queen Mary University of London. 
+We have developed a simple job search application for students. It utilises an open API sourced from the Hub, which can be found [here](https://api.thehub.io/jobs/).
   
-    
-</td>
-</table>
 
 ## The app in a nutshell:
 Amaze Job Search Web App is tailored for graduating IT students. The web app uses REST based APIs for smart job search. A smart recommender system is implemented which picks up required details from resumes like skills, personal info, hobbies and in return recommends the most suitable jobs according to current job openings. A sleek web interface has been implemented to ease the laborious process of job hunting. The app also lists available positions. 
