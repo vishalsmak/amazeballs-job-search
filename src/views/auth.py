@@ -23,7 +23,7 @@ def landing():
 @auth_app.route("/home", methods=["GET"])
 def home():
     form = SearchForm()
-    return render_template("home.html", jobs=jobs, form=form)
+    return render_template("home.html", user_name="", jobs=jobs, form=form)
 
 
 @auth_app.route("/register", methods=["GET", "POST"])
