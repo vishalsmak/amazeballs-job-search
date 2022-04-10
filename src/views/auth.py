@@ -16,8 +16,8 @@ auth_app = Blueprint("auth", __name__)
 
 @auth_app.route("/", methods=["GET"])
 @auth_app.route("/land", methods=["GET"])
-def landingpg():
-    return render_template("landingpg.html", title="land")
+def landing():
+    return render_template("landing.html", title="land")
 
 
 @auth_app.route("/home", methods=["GET"])
@@ -59,24 +59,23 @@ def about():
 
 @auth_app.route("/profile", methods=["GET", "POST"])
 def profile():
-    return render_template("userprofile.html", title="Profile")
+    return render_template("user_profile.html", title="Profile")
 
 
-@auth_app.route("/editprofile", methods=["GET", "POST"])
-def editprofile():
-    return render_template("editprofile.html", title="Edit profile")
+@auth_app.route("/edit_profile", methods=["GET", "POST"])
+def edit_profile():
+    return render_template("edit_profile.html", title="Edit profile")
 
 
 @auth_app.route("/logout")
 def logout():
-    # logout_user()
-    return redirect(url_for("auth.landingpg"))
+    return redirect(url_for("auth.landing"))
 
 
 @auth_app.route("/account", methods=["GET", "POST"])
 def account():
     form = UpdateAccountForm()
-    image_file = url_for("static", filename="profileimg.jpg")
+    image_file = url_for("static", filename="profiling.jpg")
     return render_template(
         "profile.html", title="Account", image_file=image_file, form=form
     )
