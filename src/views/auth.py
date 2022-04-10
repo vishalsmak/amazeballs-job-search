@@ -25,26 +25,33 @@ def home():
     form = SearchForm()
     return render_template("home.html", jobs=jobs, form=form)
 
+@auth_app.route('/home/<username>', methods=["GET"])
+def homeuser(username):
+    form = SearchForm()
+    return render_template("home.html", jobs=jobs, form=form,username=username)
 
 @auth_app.route("/register", methods=["GET", "POST"])
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
+        username= form.username.data
         flash(f"Account created for {form.username.data}!", "success")
-        return redirect(url_for("auth.home"))
+        return redirect(url_for("auth.homeuser",username=username))
     return render_template("register.html", title="Register", form=form)
 
 
 @auth_app.route("/login", methods=["GET", "POST"])
 def login():
     form = LoginForm()
+    username = "Admin"
     if form.validate_on_submit():
         if (
             form.email.data == "admin@job.com"
             and form.password.data == "password"
+
         ):
-            flash("You are logged in!", "success")
-            return redirect(url_for("auth.home"))
+            flash("You are logged in "+username, "success")
+            return redirect(url_for("auth.homeuser", username= username))
         else:
             flash("Incorrect Login", "danger")
     return render_template(

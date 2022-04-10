@@ -28,7 +28,11 @@
         });
    });
 </script>
+{% if username %}
+<h1> WELCOME {{ username }}</h1>
+{% else %}
 <h1>WELCOME TO OUR JOB APPLICATION</h1>
+{% endif %}
 <div class="somecontent-section">
 <form class="form-group ">
   <div class="float-container ">
