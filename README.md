@@ -15,6 +15,7 @@ Here is a working live demo :  [link to youtube video]
 
 
 ## Site
+Few snapshots of individual pages with their descriptions.
 
 ### Landing Page
 
@@ -28,8 +29,19 @@ Here is a working live demo :  [link to youtube video]
 ![](images/webapp4.jpeg)
 ![](images/webapp5.jpeg)
 
+## Setup and Launch
+
+Aplication is using a mono-repo with multiple packages. To installing and initialize all the packages on a local development environment, including running a docker image for the DB and seeding the DB, execute the following commands in the project root folder:
+
+
+```jsx
+make env-setup
+make local # To run on local
+make cloud # TO run on cloud
+```
+
 ## Architecture
-![System Architecture](https://user-images.githubusercontent.com/74494191/162629490-80b4cd99-e7e1-4bcf-9b71-07ae6b6f7db6.jpeg)
+![System Architecture](images/Architecture.png)
 
 ## Mobile support
 The Web App is compatible with devices of all sizes and all OS's, and consistent improvements will be made.
@@ -51,9 +63,9 @@ To fix a bug or enhance an existing module, follow these steps:
 
 ### Bug / Feature Request
 
-If you find a bug (the website couldn't handle the query and / or gave undesired results), kindly open an issue [here](https://github.com/iharsh234/WebApp/issues/new) by including your search query and the expected result.
+If you find a bug (the website couldn't handle the query and / or gave undesired results), kindly open an issue [here](https://github.com/vishalsmak/amazeballs-job-search/issues/new) by including your search query and the expected result.
 
-If you'd like to request a new function, feel free to do so by opening an issue [here](https://github.com/iharsh234/WebApp/issues/new). Please include sample queries and their corresponding results.
+If you'd like to request a new function, feel free to do so by opening an issue [here](https://github.com/vishalsmak/amazeballs-job-search/issues). Please include sample queries and their corresponding results.
 
 
 ## Built with 
