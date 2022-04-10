@@ -4,6 +4,8 @@ services:
         tty: true
         build:
             context: .
+            args:
+                - CONFIG_PATH=configs/cloud.cfg
         restart: always
         ports:
             - "5000:5000"

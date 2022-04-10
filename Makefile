@@ -24,7 +24,8 @@ local:
 
 cloud:
 	source venv/bin/activate; \
-	export CONFIG_PATH=configs/cloud.cfg; \
-	export FLASK_APP=app/server; \
-	export FLASK_ENV=development; \
-	flask run
+	sh gunicorn_starter.sh
+
+docker:
+	docker-compose build
+	docker-compose up
