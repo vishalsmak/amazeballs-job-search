@@ -9,7 +9,7 @@
 </td>
 </table>
 
-## The App in a nutshell:
+## The app in a nutshell:
 Amaze Job Search Web App is tailored for graduating IT students. The web app uses REST based APIs for smart job search. A smart recommender system is implemented which picks up required details from resumes like skills, personal info, hobbies and in return recommends the most suitable jobs according to current job openings. A sleek web interface has been implemented to ease the laborious process of job hunting. The app also lists available positions. 
 
 ## How the app runs:
