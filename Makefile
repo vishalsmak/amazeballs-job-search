@@ -24,6 +24,8 @@ local:
 
 cloud:
 	source venv/bin/activate; \
+	export CONFIG_PATH=configs/cloud.cfg; \
+	export FLASK_ENV=development; \
 	sh docker-entry.sh
 
 docker-build:

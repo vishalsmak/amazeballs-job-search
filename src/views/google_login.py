@@ -5,6 +5,7 @@ from flask import Blueprint, Response, render_template, request
 
 from app.config import config as cfg
 from src.data.connector import mongo_db
+from src.forms.search import SearchForm
 
 google_app = Blueprint("google", __name__)
 scope = "profile email openid"
@@ -57,16 +58,13 @@ def callback():
         first_name = response["given_name"]
         last_name = response["family_name"]
         attributes = {"google_data": response}
-
+        user_name = f"{first_name} {last_name}"
         if not mongo_db.get_user(email):
             mongo_db.save_user(email, first_name, last_name, attributes)
 
+        form = SearchForm()
         return render_template(
-            "google_response.html",
-            title="Google Response",
-            email=email,
-            first_name=first_name,
-            last_name=last_name,
+            "home.html", user_name=user_name, jobs={}, form=form
         )
     except Exception as error:
         print("callback {}".format(error))
