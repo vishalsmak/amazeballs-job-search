@@ -1,4 +1,4 @@
-from src.entities.company import Company
+from src.Entities.company import Company
 from src.logic.resume_parser.resume_parser import *
 
 
