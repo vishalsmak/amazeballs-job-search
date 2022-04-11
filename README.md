@@ -40,6 +40,7 @@ The application uses a mono-repo with multiple packages. To install and initiali
 make env-setup
 make local # To run on local
 make cloud # TO run on cloud
+make docker # To run on docker
 ```
 
 ## Architecture
