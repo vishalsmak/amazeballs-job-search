@@ -14,7 +14,7 @@ Amaze Job Search Web App is tailored for graduating IT students. The web app use
 * Support for Cloud Scalability, deploying in a container environment.
 
 ## Demo
-Here is a working live demo :  [link to youtube video]
+Here is a working live demo:  [YouTube Video](https://www.youtube.com/watch?v=kg7fPdLRWdc)
 
 
 ## Site
